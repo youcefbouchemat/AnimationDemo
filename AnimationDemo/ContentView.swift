@@ -23,7 +23,7 @@ struct ContentView: View {
                     Text("Example Button")
                 }
                     .font(.largeTitle)
-                    .transition(.fadeAndMove)
+                    .transition(.asymmetric(insertion: .scale, removal: .slide))
             }
         }
         .padding()
