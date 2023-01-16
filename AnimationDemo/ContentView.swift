@@ -23,11 +23,15 @@ struct ContentView: View {
                     Text("Example Button")
                 }
                     .font(.largeTitle)
-                    .transition(.move(edge: .top))
-                
+                    .transition(.fadeAndMove)
             }
         }
         .padding()
+    }
+}
+extension AnyTransition {
+    static var fadeAndMove: AnyTransition {
+        AnyTransition.opacity.combined(with: .move(edge: .top))
     }
 }
 
