@@ -21,7 +21,7 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .rotationEffect(.degrees(rotation))
                 .scaleEffect(scale)
-                .animation(.spring(response: 1, dampingFraction: 0.2,blendDuration: 0), value: rotation)
+                .animation(Animation.linear(duration: 1).repeatCount(10,autoreverses: false), value: rotation)
         }
     }
 }
