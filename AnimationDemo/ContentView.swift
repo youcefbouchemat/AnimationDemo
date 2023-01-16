@@ -8,26 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var rotation: Double = 0;
-    @State private var isSpinning: Bool = true
+    
+    @State private var isButtonVisible: Bool = true;
     
     var body: some View {
-        ZStack{
-            Circle()
-                .stroke(lineWidth: 2)
-                .foregroundColor(Color.blue)
-                .frame(width: 360,height: 360)
-            
-            Image(systemName: "forward.fill")
-                .font(.largeTitle)
-                .offset(y: -180)
-                .rotationEffect(.degrees(rotation))
-                .animation(Animation.linear(duration: 5).repeatForever(autoreverses: false), value: rotation)
-        }
-            .onAppear() {
-                self.isSpinning.toggle()
-                rotation = isSpinning ? 0 : 360
+        VStack{
+            Toggle(isOn: $isButtonVisible.animation(.linear(duration: 2))){
+                Text("Show/Hide Button")
             }
+            
+            if isButtonVisible {
+                Button(action: {
+                }){
+                    Text("Example Button")
+                }
+                    .font(.largeTitle)
+                    .transition(.move(edge: .top))
+                
+            }
+        }
+        .padding()
     }
 }
 
